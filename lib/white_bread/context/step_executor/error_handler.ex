@@ -5,8 +5,8 @@ end
 
 defimpl WhiteBread.Context.StepExecutor.ErrorHandler,
 for: [ESpec.AssertionError, ExUnit.AssertionError] do
-  def get_tuple(error, step, _stacktrace) do
-    {error, step, error}
+  def get_tuple(error, step, stacktrace) do
+    {error.__struct__, step, {error, stacktrace}}
   end
 end
 
